@@ -1,0 +1,11 @@
+body{
+    background: url(bg_stars.gif);
+    color: yellow;
+}
+h1 {
+  text-align: center;
+}
+form {
+  display: inline;
+  
+}
