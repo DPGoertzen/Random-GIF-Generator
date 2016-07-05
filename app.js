@@ -11,7 +11,8 @@ $(function(){
   var search = "";
   var searchTag = "";
   var i = 0;
-  var thing = "";
+  var searchURL = "";
+  var resultFinder = 0;
 
 // handles random gif form submission.
   $(".makeGIF").on("submit", function(event){
@@ -61,23 +62,23 @@ $(function(){
       alert("You must provide a search term!");
     }
     search.then(function(data){
-      j = 0;
+      resultFinder = 0;
       i = 0;
       $(".container").empty();
       for(i = 0; i< 5; i++){
-        thing = data.data[i].images.original.url;
-        $(".container").append('<img src="' + thing + '" />');
+        searchURL = data.data[i].images.original.url;
+        $(".container").append('<img src="' + searchURL + '" />');
       }
       $(".next5").on("click", function(){
         $(".container").empty();
-        var j = i + 5;
-        for(i; i< j; i++){
+        resultFinder = i + 5;
+        for(i; i< resultFinder; i++){
           if(i === data.data.length){
             $(".container").append('<p>All out of wacky pictures! Try a new search!</p>');
             return;
           }else{
-            thing = data.data[i].images.original.url;
-            $(".container").append('<img src="' + thing + '" />');
+            searchURL = data.data[i].images.original.url;
+            $(".container").append('<img src="' + searchURL + '" />');
           }
         }
       });
